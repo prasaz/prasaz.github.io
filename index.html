@@ -4,71 +4,73 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Goalio Support</title>
-  <meta name="description" content="Goalio support hub with feature guides, reminders help, widgets help, and contact.">
+  <meta name="description" content="Goalio support, feature guides, setup help, and troubleshooting.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f8f7;
-      --surface: #ffffff;
-      --ink: #1a2522;
-      --muted: #5a6763;
-      --brand: #0b8f76;
-      --brand-strong: #087460;
-      --accent: #ffb74d;
-      --line: #dce3e0;
-      --ok: #2e7d32;
-      --warn: #b26a00;
-      --shadow: 0 18px 40px rgba(10, 44, 37, 0.08);
-      --radius: 16px;
+      --goalio-blue: #4d66ff;
+      --goalio-purple: #994de6;
+      --goalio-gold: #ffb333;
+      --goalio-orange: #ff8000;
+      --goalio-success: #33cc80;
+      --goalio-bg: #f5f7ff;
+      --goalio-text: #1d2330;
+      --goalio-muted: #5f6b85;
+      --goalio-card: #ffffff;
+      --goalio-line: #e2e7ff;
+      --goalio-shadow: 0 16px 36px rgba(56, 70, 140, 0.12);
+      --goalio-radius: 18px;
     }
 
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      color: var(--ink);
+      font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--goalio-text);
       background:
-        radial-gradient(1200px 500px at -20% -10%, #b8efe1 0%, transparent 60%),
-        radial-gradient(700px 320px at 110% 10%, #ffe4b8 0%, transparent 60%),
-        var(--bg);
+        radial-gradient(1050px 540px at -15% -20%, rgba(77, 102, 255, 0.26), transparent 58%),
+        radial-gradient(920px 440px at 110% -10%, rgba(153, 77, 230, 0.21), transparent 58%),
+        var(--goalio-bg);
       line-height: 1.6;
     }
 
     .wrap {
-      width: min(1100px, 92vw);
+      width: min(1080px, 92vw);
       margin: 0 auto;
     }
 
     .hero {
-      padding: 52px 0 24px;
-      animation: rise 450ms ease-out both;
+      padding: 52px 0 26px;
+      animation: reveal 420ms ease both;
     }
 
-    .badge {
-      display: inline-block;
-      background: #ddf7f1;
-      color: #0f6a58;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 600;
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-size: 13px;
+      font-weight: 800;
+      color: var(--goalio-blue);
+      background: rgba(77, 102, 255, 0.12);
+      border: 1px solid rgba(77, 102, 255, 0.22);
+      border-radius: 999px;
+      padding: 7px 13px;
     }
 
     h1 {
-      margin: 12px 0 10px;
-      font-family: "Fraunces", serif;
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1.04;
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
       letter-spacing: -0.02em;
     }
 
     .sub {
       margin: 0;
-      color: var(--muted);
-      max-width: 760px;
-      font-size: clamp(16px, 1.8vw, 20px);
+      max-width: 780px;
+      color: var(--goalio-muted);
+      font-size: clamp(16px, 1.7vw, 20px);
     }
 
     .actions {
@@ -79,196 +81,206 @@
     }
 
     .btn {
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 16px;
       text-decoration: none;
-      font-weight: 700;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-weight: 800;
+      border: 1px solid transparent;
       transition: transform 120ms ease, box-shadow 120ms ease;
     }
+
     .btn:hover { transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
 
     .btn-primary {
       color: #fff;
-      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
-      box-shadow: 0 10px 22px rgba(11, 143, 118, 0.25);
+      background: linear-gradient(135deg, var(--goalio-blue), var(--goalio-purple));
+      box-shadow: 0 10px 22px rgba(94, 95, 238, 0.3);
     }
+
     .btn-secondary {
-      color: var(--ink);
+      color: var(--goalio-text);
       background: #fff;
-      border: 1px solid var(--line);
+      border-color: var(--goalio-line);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 16px;
-      margin: 18px 0 34px;
+      margin: 8px 0 30px;
     }
 
     .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background: var(--goalio-card);
+      border: 1px solid var(--goalio-line);
+      border-radius: var(--goalio-radius);
       padding: 18px;
-      animation: rise 380ms ease-out both;
+      box-shadow: var(--goalio-shadow);
+      animation: reveal 420ms ease both;
     }
 
     .card h2, .card h3 {
       margin: 0 0 8px;
       line-height: 1.2;
     }
-    .card p { margin: 0; color: var(--muted); }
 
-    .features { grid-column: span 8; }
-    .status { grid-column: span 4; }
-    .span-4 { grid-column: span 4; }
-    .span-6 { grid-column: span 6; }
+    .card p {
+      margin: 0;
+      color: var(--goalio-muted);
+    }
+
     .span-12 { grid-column: span 12; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
 
-    .feature-list {
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       margin-top: 12px;
     }
+
     .feature {
-      padding: 12px;
+      border: 1px solid #e8ecff;
       border-radius: 12px;
-      border: 1px solid #e4ebe8;
-      background: #fbfdfc;
+      padding: 11px;
+      background: #fafbff;
     }
-    .feature b { display: block; margin-bottom: 4px; }
+
+    .feature b {
+      display: block;
+      margin-bottom: 4px;
+      color: #253154;
+    }
 
     .pill {
       display: inline-block;
       border-radius: 999px;
       padding: 4px 10px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       margin-right: 8px;
     }
-    .pill.ok { background: #e2f3e3; color: var(--ok); }
-    .pill.warn { background: #fff1db; color: var(--warn); }
 
-    .steps { margin: 10px 0 0; padding-left: 18px; }
-    .steps li { margin-bottom: 8px; color: var(--muted); }
+    .ok { background: rgba(51, 204, 128, 0.14); color: #228a59; }
+    .hint { background: rgba(255, 179, 51, 0.2); color: #a36400; }
+
+    ol {
+      margin: 10px 0 0 19px;
+      padding: 0;
+      color: var(--goalio-muted);
+    }
+
+    li { margin-bottom: 8px; }
 
     details {
-      border: 1px solid var(--line);
+      border: 1px solid var(--goalio-line);
       border-radius: 12px;
-      background: #fff;
       padding: 10px 12px;
+      background: #fff;
     }
+
     details + details { margin-top: 10px; }
+
     summary {
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 800;
+      color: #253154;
       list-style: none;
     }
+
     summary::-webkit-details-marker { display: none; }
 
     footer {
-      padding: 14px 0 28px;
-      color: var(--muted);
+      padding: 6px 0 30px;
+      color: var(--goalio-muted);
       font-size: 14px;
     }
 
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 920px) {
-      .features, .status, .span-4, .span-6, .span-12 { grid-column: span 12; }
-      .feature-list { grid-template-columns: 1fr; }
+      .span-8, .span-6, .span-4, .span-12 { grid-column: span 12; }
+      .feature-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="hero wrap">
-    <span class="badge">Goalio Support Center</span>
-    <h1>Support, setup, and feature help in one page</h1>
-    <p class="sub">
-      Goalio helps you manage money, time, routine, and countdown goals. Use this page to quickly set up reminders, widgets, and troubleshoot common issues.
-    </p>
+    <span class="hero-chip">Goalio Support</span>
+    <h1>Track goals with clarity. Get help fast.</h1>
+    <p class="sub">Everything you need to use Goalio confidently: core features, reminder setup, widgets, and troubleshooting.</p>
     <div class="actions">
       <a class="btn btn-primary" href="mailto:prasanna.sliit@gmail.com">Contact Support</a>
-      <a class="btn btn-secondary" href="#privacy">Privacy Summary</a>
+      <a class="btn btn-secondary" href="./privacy.html">Privacy Policy</a>
     </div>
   </header>
 
   <main class="wrap">
     <section class="grid">
-      <article class="card features">
+      <article class="card span-8">
         <h2>Core Features</h2>
-        <p>What Goalio is built for:</p>
-        <div class="feature-list">
-          <div class="feature"><b>Money Goals</b>Track progress with target amounts and quick updates.</div>
-          <div class="feature"><b>Time Goals</b>Use automatic countdown or manual progress mode.</div>
-          <div class="feature"><b>Routine Goals</b>Daily, weekly, hourly, and streak-target tracking.</div>
-          <div class="feature"><b>Countdown Goals</b>Event countdowns with multiple display styles.</div>
-          <div class="feature"><b>Home Widgets</b>Goal deep links, today stats, and quick check-in actions.</div>
-          <div class="feature"><b>Reminders</b>Hourly, daily, weekly (day + time), custom intervals, one-time.</div>
+        <p>Designed to make progress visible across every goal type.</p>
+        <div class="feature-grid">
+          <div class="feature"><b>Money Goals</b>Track savings targets and update amount progress quickly.</div>
+          <div class="feature"><b>Time Goals</b>Auto progress by timeline or manually update percentages.</div>
+          <div class="feature"><b>Routine Goals</b>Daily, weekly, specific-day, and streak-target workflows.</div>
+          <div class="feature"><b>Countdown Goals</b>See date-based progress and upcoming milestones at a glance.</div>
+          <div class="feature"><b>Reminder System</b>Hourly, daily, weekly, custom, and one-time reminders.</div>
+          <div class="feature"><b>Widgets</b>Small/medium/large widgets with quick progress context.</div>
         </div>
       </article>
 
-      <aside class="card status">
-        <h3>Quick Status Check</h3>
-        <p><span class="pill ok">Expected</span>Widgets open directly to goal detail.</p>
-        <p><span class="pill ok">Expected</span>Weekly reminders allow day + time selection.</p>
-        <p><span class="pill warn">Tip</span>If reminders don’t fire, verify iOS notification permission.</p>
-      </aside>
+      <article class="card span-4">
+        <h2>Quick Checks</h2>
+        <p><span class="pill ok">Recommended</span>Keep notifications enabled in iOS Settings.</p>
+        <p style="margin-top: 10px;"><span class="pill hint">Tip</span>Open each goal to tune reminder schedule and streak behavior.</p>
+      </article>
 
       <article class="card span-6">
         <h3>Reminder Setup</h3>
-        <ol class="steps">
-          <li>Open any goal and enable <b>Set a reminder</b>.</li>
-          <li>Choose interval: Hourly / Daily / Weekly / Custom / Once.</li>
-          <li>For Weekly: set <b>day</b> and <b>time</b>.</li>
-          <li>Allow notifications in iOS Settings when prompted.</li>
+        <ol>
+          <li>Open a goal and enable <b>Set a reminder</b>.</li>
+          <li>Choose frequency: hourly, daily, weekly, custom, or once.</li>
+          <li>For weekly reminders, choose both day and time.</li>
+          <li>Confirm iOS notification permission if prompted.</li>
         </ol>
       </article>
 
       <article class="card span-6">
         <h3>Widget Setup</h3>
-        <ol class="steps">
-          <li>Add Goalio widget from Home Screen edit mode.</li>
-          <li>Long-press widget and choose your mode/goal.</li>
-          <li>Tap widget to open the linked goal detail view.</li>
-          <li>Use quick actions (Check In, +$10, +10%) where shown.</li>
+        <ol>
+          <li>Long-press Home Screen and tap <b>+</b>.</li>
+          <li>Search <b>Goalio</b> and pick widget size.</li>
+          <li>Select a specific goal for context-aware deep linking.</li>
+          <li>Use app settings to switch widget appearance theme.</li>
         </ol>
       </article>
 
       <article class="card span-12">
-        <h3>FAQ</h3>
+        <h2>FAQ</h2>
         <details>
-          <summary>Why didn’t I get a reminder?</summary>
-          <p>Check iOS notification permission, Focus modes, and that reminders are enabled globally and for that goal.</p>
+          <summary>Why am I not getting reminders?</summary>
+          <p>Check both Goalio reminder toggle and iOS notification permission in Settings. Low Power Mode and Focus filters can also delay delivery.</p>
         </details>
         <details>
-          <summary>Widgets are stale or not updating</summary>
-          <p>Open Goalio once to refresh data, then try re-adding the widget if needed.</p>
+          <summary>Do widgets open the related goal screen?</summary>
+          <p>Yes. Tapping a widget should deep-link directly into the goal represented by that widget.</p>
         </details>
         <details>
-          <summary>How do I sync across devices?</summary>
-          <p>Enable iCloud Sync in Goalio settings and use the same Apple ID on all devices.</p>
+          <summary>How is data stored?</summary>
+          <p>Goal data is stored locally on device and can be synced with iCloud when enabled in app settings.</p>
         </details>
-      </article>
-
-      <article class="card span-12" id="privacy">
-        <h3>Privacy Summary</h3>
-        <p>
-          Goalio stores your goal data on-device. If you enable iCloud Sync, data syncs through Apple CloudKit. Goalio uses notification permission only for reminders you enable and does not sell personal data.
-        </p>
       </article>
     </section>
   </main>
 
   <footer class="wrap">
-    <div>Need help? Email <a href="mailto:you@example.com">prasanna.sliit@gmail.com</a> · Typical response: 2-3 business days</div>
+    Goalio Support · <a href="./privacy.html">Privacy Policy</a>
   </footer>
 </body>
 </html>
